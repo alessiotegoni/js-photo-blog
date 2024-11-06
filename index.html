@@ -6,6 +6,11 @@
     <title>Photo Blog</title>
 
     <link rel="stylesheet" href="./style.css" />
+
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"
+    ></script>
     <script defer src="./main.js"></script>
   </head>
   <body>
@@ -17,18 +22,7 @@
       </header>
       <main class="blog-cards">
         <div class="container blog-cards__container">
-          <div class="grid-auto-cols">
-            <div class="card">
-              <img src="./img/pin.svg" alt="pin-icon" class="card__pin" />
-              <figure>
-                <img src="" alt="" class="card__thumb" />
-                <figcaption class="thumb__description">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Tenetur ipsum, alias modi reiciendis dolore facere?
-                </figcaption>
-              </figure>
-            </div>
-          </div>
+          <ul class="grid-auto-cols"></ul>
         </div>
       </main>
     </div>

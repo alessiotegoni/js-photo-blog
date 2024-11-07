@@ -4,8 +4,11 @@
   box-sizing: border-box;
 }
 
-ul {
-  list-style: none;
+button {
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: 0;
 }
 
 .hero {
@@ -22,6 +25,27 @@ ul {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 2rem;
+}
+
+.alert__container {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.alert__container.active {
+  display: flex;
+}
+
+.close__alert-btn {
+  padding: 1rem 2rem;
+  background: rgb(187, 152, 64);
+  border-radius: 0.5rem;
 }
 
 .header__title {
@@ -45,6 +69,18 @@ ul {
   padding: 1rem;
   position: relative;
   background: #fff;
+  transition: all 0.5s ease;
+  list-style: none;
+}
+
+.card:hover {
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  transform: rotate(5deg);
+}
+
+.alert__container .card {
+  max-width: 300px;
 }
 
 .card__thumb {

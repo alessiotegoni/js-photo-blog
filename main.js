@@ -2,6 +2,21 @@ const API_URL = "https://jsonplaceholder.typicode.com/photos";
 
 const cardsContainer = document.querySelector(".blog-cards__container ul");
 
+const alertContainer = document.querySelector(".alert__container");
+const alertContent = alertContainer.querySelector(".alert__content");
+const closeAlertBtn = alertContainer.querySelector("button");
+
+const showCard = (e) => {
+  const card = e.currentTarget.cloneNode(true);
+  alertContainer.classList.add("active");
+
+  alertContent.innerHTML = "";
+  alertContent.appendChild(card);
+};
+
+const hideCard = () => alertContainer.classList.remove("active");
+closeAlertBtn.addEventListener("click", hideCard);
+
 const renderCards = (cards) => {
   cardsContainer.innerHTML = "";
   const cardEl = cards.map(
@@ -18,13 +33,16 @@ const renderCards = (cards) => {
   );
 
   cardsContainer.innerHTML = cardEl.join(" ");
+
+  cardsContainer
+    .querySelectorAll(".blog-cards .card")
+    .forEach((c) => c.addEventListener("click", showCard));
 };
 
-const generateCards = async (length = 6) => {
+const fetchCards = async (length = 6) => {
   try {
     const photos = (await axios.get(API_URL, { params: { _limit: length } }))
       .data;
-    console.log(photos);
 
     renderCards(photos);
   } catch (err) {
@@ -32,4 +50,4 @@ const generateCards = async (length = 6) => {
   }
 };
 
-generateCards();
+fetchCards();
